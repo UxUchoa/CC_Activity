@@ -144,6 +144,17 @@ http://localhost:8080/catalogo-filmes/
 
 A raiz redireciona para `/catalogo-filmes/filmes`.
 
+### Se a porta 8080 já estiver ocupada
+
+Edite `conf/server.xml` do Tomcat e troque a porta do conector HTTP:
+
+```xml
+<Connector port="8081" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
+```
+
+Troque também a porta de shutdown (`<Server port="8005" ...>` para `8006`) se houver
+outro Tomcat rodando. O endereço passa a ser `http://localhost:8081/catalogo-filmes/`.
+
 ### Credenciais
 
 A aplicação **não possui login** — nenhuma credencial é necessária.
