@@ -128,10 +128,29 @@ target/catalogo-filmes.war
 
 1. Gere o WAR com `mvn clean test package`.
 2. Copie `target/catalogo-filmes.war` para a pasta `webapps` do Tomcat 10.
-3. Inicie o Tomcat:
-   - Windows: `%CATALINA_HOME%\bin\startup.bat`
-   - Linux/macOS: `$CATALINA_HOME/bin/startup.sh`
+3. Defina `CATALINA_HOME` e inicie o Tomcat.
+
+   Windows (PowerShell):
+
+   ```powershell
+   $env:CATALINA_HOME="C:\caminho\para\apache-tomcat-10.1.59"
+   & "$env:CATALINA_HOME\bin\startup.bat"
+   ```
+
+   Linux/macOS:
+
+   ```bash
+   export CATALINA_HOME=/caminho/para/apache-tomcat-10.1.59
+   "$CATALINA_HOME/bin/startup.sh"
+   ```
+
+   > **Atenção:** sem `CATALINA_HOME` definido, o `startup.bat` procura o Tomcat no
+   > **diretório atual** do terminal, não na pasta onde o script está. Chamar o script pelo
+   > caminho completo a partir de outra pasta falha com
+   > `The CATALINA_HOME environment variable is not defined correctly`.
+
 4. Aguarde o Tomcat expandir o WAR (surge a pasta `webapps/catalogo-filmes`).
+5. Para parar, use `shutdown.bat` (ou `shutdown.sh`) com a mesma variável definida.
 
 O `InicializadorBanco` cria a tabela `filmes` no start e insere três filmes de
 demonstração apenas quando a tabela está vazia — reiniciar o servidor não duplica registros.
