@@ -1,0 +1,18 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><c:out value="${empty tituloPagina ? 'Catálogo de Filmes' : tituloPagina}"/> &middot; Catálogo de Filmes</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+</head>
+<body>
+<header class="cabecalho">
+    <div class="container cabecalho__linha">
+        <a class="cabecalho__marca" href="${pageContext.request.contextPath}/filmes">🎬 Catálogo de Filmes</a>
+        <a class="botao botao--destaque" href="${pageContext.request.contextPath}/filmes/novo">Cadastrar filme</a>
+    </div>
+</header>
+<main class="container conteudo">
